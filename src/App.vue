@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <h1>Financial Reports</h1>
+
+    <!-- FilterBar for managing search and export options -->
     <FilterBar
       :searchQuery="searchQuery"
       :selectedExportFormat="selectedExportFormat"
@@ -8,6 +10,8 @@
       @update:selectedExportFormat="updateExportFormat"
       @export="exportData"
     />
+
+    <!-- Conditional rendering: Show loading indicator or report table -->
     <LoadingIndicator v-if="loading" />
     <ReportTable v-else :reports="filteredReports" />
   </div>
@@ -24,11 +28,15 @@ import { exportToCSV, exportToPDF, exportToExcel } from "@/utils/exportUtils";
 export default defineComponent({
   name: "App",
   components: { FilterBar, ReportTable, LoadingIndicator },
-  setup() {
-    const store = useReportStore();
-    const searchQuery = ref("");
-    const selectedExportFormat = ref("pdf"); // Initial default export format
 
+  setup() {
+    const store = useReportStore(); // State management for reports
+
+    // Reactive properties for user inputs
+    const searchQuery = ref("");
+    const selectedExportFormat = ref("pdf");
+
+    // Filter reports based on the search query
     const filteredReports = computed(() =>
       store.reports.filter((report) => {
         const query = searchQuery.value.toLowerCase();
@@ -39,8 +47,10 @@ export default defineComponent({
       })
     );
 
+    // Track the loading state from the store
     const loading = computed(() => store.loading);
 
+    // Handle exporting data in the selected format
     const exportData = (format: string) => {
       const reports = filteredReports.value;
       switch (format) {
@@ -58,14 +68,17 @@ export default defineComponent({
       }
     };
 
+    // Update the search query from user input
     const updateSearchQuery = (query: string) => {
       searchQuery.value = query;
     };
 
+    // Update the selected export format
     const updateExportFormat = (format: string) => {
       selectedExportFormat.value = format;
     };
 
+    // Fetch reports when the component is mounted
     onMounted(() => {
       store.fetchReports();
     });

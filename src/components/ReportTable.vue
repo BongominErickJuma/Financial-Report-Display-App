@@ -1,6 +1,7 @@
 <template>
   <table border="1" cellspacing="0" cellpadding="10">
     <thead>
+      <!-- Table headers -->
       <tr>
         <th>Transaction ID</th>
         <th>Date</th>
@@ -11,6 +12,7 @@
       </tr>
     </thead>
     <tbody>
+      <!-- Dynamically render each report row -->
       <tr v-for="report in reports" :key="report.transactionId">
         <td>{{ report.transactionId }}</td>
         <td>{{ report.date }}</td>
@@ -29,7 +31,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "ReportTable",
   props: {
-    reports: { type: Array, required: true },
+    reports: { type: Array, required: true }, // Array of report objects passed from the parent
   },
 });
 </script>

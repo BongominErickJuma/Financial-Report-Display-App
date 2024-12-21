@@ -1,18 +1,25 @@
 <template>
   <div class="filter-export-container">
+    <!-- Input field for search functionality -->
     <input
       type="text"
       :value="searchQuery"
       @input="handleInput"
       placeholder="Search by Transaction Type or Account Holder Name"
     />
+
+    <!-- Export options container -->
     <div class="export-container">
       <span>Export</span>
+
+      <!-- Dropdown for selecting export format -->
       <select v-model="localExportFormat">
         <option value="pdf">PDF</option>
         <option value="csv">CSV</option>
         <option value="excel">Excel</option>
       </select>
+
+      <!-- Button to trigger export event -->
       <button @click="$emit('export', localExportFormat)">Export</button>
     </div>
   </div>
@@ -24,20 +31,22 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "FilterBar",
   props: {
-    searchQuery: { type: String, required: true },
-    selectedExportFormat: { type: String, required: true },
+    searchQuery: { type: String, required: true }, // Search query from the parent
+    selectedExportFormat: { type: String, required: true }, // Export format from the parent
   },
   data() {
     return {
-      localExportFormat: this.selectedExportFormat, // Initialize local data with prop value
+      localExportFormat: this.selectedExportFormat, // Local state for the selected export format
     };
   },
   watch: {
+    // Watch for changes in the local export format and sync with the parent component
     localExportFormat(newValue) {
-      this.$emit("update:selectedExportFormat", newValue); // Sync local changes with the parent
+      this.$emit("update:selectedExportFormat", newValue);
     },
   },
   methods: {
+    // Emit the search query as the user types
     handleInput(event: Event) {
       const target = event.target as HTMLInputElement | null;
       if (target) {

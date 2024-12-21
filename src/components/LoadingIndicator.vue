@@ -1,4 +1,5 @@
 <template>
+  <!-- Displays a message while data is being loaded -->
   <div class="loading-container">
     <p>Loading data...</p>
   </div>
@@ -8,6 +9,6 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "LoadingIndicator",
+  name: "LoadingIndicator", // Simple component to indicate loading state
 });
 </script>

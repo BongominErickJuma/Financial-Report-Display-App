@@ -9,15 +9,19 @@ interface Report {
 }
 
 export const useReportStore = defineStore("report", {
+  // Define the state of the store
   state: () => ({
-    reports: [] as Array<Report>, // Specify the type for the reports array
-    loading: true, // Tracks loading state
-    searchQuery: "", // Search query for filtering
+    reports: [] as Array<Report>, // Array to store report data
+    loading: true, // Tracks if data is being loaded
+    searchQuery: "", // Stores the current search query
     selectedExportFormat: "pdf", // Default export format
   }),
+
+  // Define getters to compute derived state
   getters: {
     filteredReports: (state) => {
       const query = state.searchQuery.toLowerCase();
+      // Filter reports by transaction type or account holder name
       return state.reports.filter(
         (report) =>
           report.transactionType.toLowerCase().includes(query) ||
@@ -25,18 +29,21 @@ export const useReportStore = defineStore("report", {
       );
     },
   },
+
+  // Define actions to update the store state
   actions: {
+    // Fetch reports data from a mock endpoint
     async fetchReports() {
       try {
         const response = await fetch("/mock-reports.json");
         if (!response.ok) {
           throw new Error("Failed to fetch reports");
         }
-        this.reports = await response.json(); // Ensure your mock data matches the Report type
-        this.loading = false;
+        this.reports = await response.json();
+        this.loading = false; // Set loading to false once data is loaded
       } catch (error) {
         console.error("Error fetching data:", error);
-        this.loading = false;
+        this.loading = false; // Ensure loading is false even on error
       }
     },
   },
