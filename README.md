@@ -1,6 +1,7 @@
 # Financial Report Display App
 
-A Vue.js 3 application with Vuetify to display financial reports.
+A Vue.js 3 application to display financial reports.
+
 
 ## Features
 
