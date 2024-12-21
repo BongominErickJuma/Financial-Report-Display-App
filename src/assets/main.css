@@ -1,0 +1,121 @@
+/* General Styling */
+#app {
+  font-family: Arial, sans-serif;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Filter and Export Section */
+.filter-export-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-export-container input[type="text"] {
+  width: 50%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.export-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.export-container select,
+.export-container button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.export-container button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.export-container button:hover {
+  background-color: #45a049;
+}
+
+/* Loading Indicator */
+.loading-container {
+  text-align: center;
+  color: #555;
+  font-size: 16px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: white;
+}
+
+thead {
+  background-color: #4caf50;
+  color: white;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #app {
+    padding: 10px;
+  }
+
+  .filter-export-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .filter-export-container input[type="text"] {
+    width: 100%;
+  }
+
+  .export-container {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  table {
+    font-size: 14px;
+  }
+}

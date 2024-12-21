@@ -1,0 +1,82 @@
+[
+  {
+    "transactionId": "TX12345",
+    "date": "2024-12-01",
+    "accountHolderName": "John Doe",
+    "transactionType": "Deposit",
+    "amount": 1000.0,
+    "accountBalance": 5000.0
+  },
+  {
+    "transactionId": "TX12346",
+    "date": "2024-12-02",
+    "accountHolderName": "Jane Smith",
+    "transactionType": "Withdrawal",
+    "amount": 500.0,
+    "accountBalance": 4500.0
+  },
+  {
+    "transactionId": "TX12347",
+    "date": "2024-12-03",
+    "accountHolderName": "Alice Brown",
+    "transactionType": "Loan Payment",
+    "amount": 1500.0,
+    "accountBalance": 3000.0
+  },
+  {
+    "transactionId": "TX12348",
+    "date": "2024-12-04",
+    "accountHolderName": "Chris Green",
+    "transactionType": "Deposit",
+    "amount": 2000.0,
+    "accountBalance": 7000.0
+  },
+  {
+    "transactionId": "TX12349",
+    "date": "2024-12-05",
+    "accountHolderName": "Emma White",
+    "transactionType": "Withdrawal",
+    "amount": 300.0,
+    "accountBalance": 6700.0
+  },
+  {
+    "transactionId": "TX12350",
+    "date": "2024-12-06",
+    "accountHolderName": "Oliver Black",
+    "transactionType": "Deposit",
+    "amount": 400.0,
+    "accountBalance": 7100.0
+  },
+  {
+    "transactionId": "TX12351",
+    "date": "2024-12-07",
+    "accountHolderName": "Sophia Gray",
+    "transactionType": "Loan Payment",
+    "amount": 2500.0,
+    "accountBalance": 4600.0
+  },
+  {
+    "transactionId": "TX12352",
+    "date": "2024-12-08",
+    "accountHolderName": "Liam Brown",
+    "transactionType": "Withdrawal",
+    "amount": 800.0,
+    "accountBalance": 3800.0
+  },
+  {
+    "transactionId": "TX12353",
+    "date": "2024-12-09",
+    "accountHolderName": "Isabella Wilson",
+    "transactionType": "Deposit",
+    "amount": 1000.0,
+    "accountBalance": 4800.0
+  },
+  {
+    "transactionId": "TX12354",
+    "date": "2024-12-10",
+    "accountHolderName": "Ethan Davis",
+    "transactionType": "Loan Payment",
+    "amount": 2000.0,
+    "accountBalance": 2800.0
+  }
+]
