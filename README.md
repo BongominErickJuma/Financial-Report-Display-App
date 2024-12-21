@@ -20,7 +20,9 @@ A Vue.js 3 application to display financial reports.
    cd Financial-Report-Display-App
 
 3. Install dependencies
+   
    npm install
 
 4. Run the application
+
    npm run dev
