@@ -3,13 +3,14 @@ import "jspdf-autotable";
 import * as XLSX from "xlsx";
 
 export function exportToCSV(reports: any[]) {
+  // Format the date into an ISO format or other Excel-friendly format
   const csvContent =
     "Transaction ID,Date,Account Holder Name,Transaction Type,Amount,Account Balance\n" +
     reports
       .map((report) =>
         [
           report.transactionId,
-          report.date,
+          new Date(report.date).toISOString().split("T")[0], // Format the date
           report.accountHolderName,
           report.transactionType,
           report.amount,
@@ -17,6 +18,7 @@ export function exportToCSV(reports: any[]) {
         ].join(",")
       )
       .join("\n");
+
   const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);

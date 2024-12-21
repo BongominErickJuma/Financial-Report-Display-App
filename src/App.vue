@@ -14,6 +14,14 @@
     <!-- Conditional rendering: Show loading indicator or report table -->
     <LoadingIndicator v-if="loading" />
     <ReportTable v-else :reports="filteredReports" />
+
+    <!-- No records found message -->
+    <div
+      v-if="!loading && filteredReports.length === 0"
+      class="no-results-message"
+    >
+      No records found.
+    </div>
   </div>
 </template>
 
