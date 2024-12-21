@@ -5,6 +5,7 @@
       :searchQuery="searchQuery"
       :selectedExportFormat="selectedExportFormat"
       @search="updateSearchQuery"
+      @update:selectedExportFormat="updateExportFormat"
       @export="exportData"
     />
     <LoadingIndicator v-if="loading" />
@@ -26,7 +27,7 @@ export default defineComponent({
   setup() {
     const store = useReportStore();
     const searchQuery = ref("");
-    const selectedExportFormat = ref("pdf");
+    const selectedExportFormat = ref("pdf"); // Initial default export format
 
     const filteredReports = computed(() =>
       store.reports.filter((report) => {
@@ -40,15 +41,29 @@ export default defineComponent({
 
     const loading = computed(() => store.loading);
 
-    const exportData = () => {
+    const exportData = (format: string) => {
       const reports = filteredReports.value;
-      if (selectedExportFormat.value === "csv") exportToCSV(reports);
-      else if (selectedExportFormat.value === "pdf") exportToPDF(reports);
-      else if (selectedExportFormat.value === "excel") exportToExcel(reports);
+      switch (format) {
+        case "csv":
+          exportToCSV(reports);
+          break;
+        case "pdf":
+          exportToPDF(reports);
+          break;
+        case "excel":
+          exportToExcel(reports);
+          break;
+        default:
+          console.error("Unsupported export format:", format);
+      }
     };
 
     const updateSearchQuery = (query: string) => {
       searchQuery.value = query;
+    };
+
+    const updateExportFormat = (format: string) => {
+      selectedExportFormat.value = format;
     };
 
     onMounted(() => {
@@ -62,6 +77,7 @@ export default defineComponent({
       loading,
       exportData,
       updateSearchQuery,
+      updateExportFormat,
     };
   },
 });
